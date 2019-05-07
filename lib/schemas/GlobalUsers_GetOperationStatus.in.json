@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Payload to get the status of an operation",
+            "properties": {
+                "operationUrl": {
+                    "description": "The operation url of long running operation",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "operationUrl"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

@@ -1,0 +1,134 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Properties for creating a managed lab and a default environment setting",
+            "properties": {
+                "environmentSettingCreationParameters": {
+                    "description": "Settings related to creating an environment setting",
+                    "properties": {
+                        "resourceSettingCreationParameters": {
+                            "description": "The resource specific settings",
+                            "properties": {
+                                "galleryImageResourceId": {
+                                    "description": "The resource id of the gallery image used for creating the virtual machine",
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "description": "The location where the virtual machine will live",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "The name of the resource setting",
+                                    "type": "string"
+                                },
+                                "referenceVmCreationParameters": {
+                                    "description": "Creation parameters for Reference Vm",
+                                    "properties": {
+                                        "password": {
+                                            "description": "The password of the virtual machine.",
+                                            "type": "string"
+                                        },
+                                        "userName": {
+                                            "description": "The username of the virtual machine",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "userName",
+                                        "password"
+                                    ],
+                                    "type": "object"
+                                },
+                                "size": {
+                                    "description": "The size of the virtual machine",
+                                    "enum": [
+                                        "Basic",
+                                        "Standard",
+                                        "Performance"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "ManagedLabVmSize",
+                                        "values": [
+                                            {
+                                                "description": "The base VM size",
+                                                "value": "Basic"
+                                            },
+                                            {
+                                                "description": "The standard or default VM size",
+                                                "value": "Standard"
+                                            },
+                                            {
+                                                "description": "The most performant VM size",
+                                                "value": "Performance"
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            "required": [
+                                "galleryImageResourceId",
+                                "referenceVmCreationParameters"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "resourceSettingCreationParameters"
+                    ],
+                    "type": "object"
+                },
+                "labCreationParameters": {
+                    "description": "Settings related to creating a lab",
+                    "properties": {
+                        "maxUsersInLab": {
+                            "description": "Maximum number of users allowed in the lab.",
+                            "format": "int32",
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
+                },
+                "location": {
+                    "description": "The location of the resource",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name of the resource",
+                    "type": "string"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The tags of the resource.",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "labCreationParameters",
+                "name"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

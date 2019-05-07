@@ -1,0 +1,167 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "environmentSettingName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An Azure resource.",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "The location of the resource.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-ms-azure-resource": true
+                }
+            ],
+            "description": "Represents settings of an environment, from which environment instances would be created",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the Environment Setting resource",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "configurationState": {
+                            "description": "Describes the user's progress in configuring their environment setting",
+                            "enum": [
+                                "NotApplicable",
+                                "Completed"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "ConfigurationState",
+                                "values": [
+                                    {
+                                        "description": "User either hasn't started configuring their template\r\nor they haven't started the configuration process.",
+                                        "value": "NotApplicable"
+                                    },
+                                    {
+                                        "description": "User is finished modifying the template.",
+                                        "value": "Completed"
+                                    }
+                                ]
+                            }
+                        },
+                        "description": {
+                            "description": "Describes the environment and its resource settings",
+                            "type": "string"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning status of the resource.",
+                            "type": "string"
+                        },
+                        "resourceSettings": {
+                            "description": "The resource specific settings",
+                            "properties": {
+                                "galleryImageResourceId": {
+                                    "description": "The resource id of the gallery image used for creating the virtual machine",
+                                    "type": "string"
+                                },
+                                "referenceVm": {
+                                    "description": "Details specific to Reference Vm",
+                                    "properties": {
+                                        "password": {
+                                            "description": "The password of the virtual machine. This will be set to null in GET resource API",
+                                            "type": "string"
+                                        },
+                                        "userName": {
+                                            "description": "The username of the virtual machine",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "size": {
+                                    "description": "The size of the virtual machine",
+                                    "enum": [
+                                        "Basic",
+                                        "Standard",
+                                        "Performance"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "ManagedLabVmSize",
+                                        "values": [
+                                            {
+                                                "description": "The base VM size",
+                                                "value": "Basic"
+                                            },
+                                            {
+                                                "description": "The standard or default VM size",
+                                                "value": "Standard"
+                                            },
+                                            {
+                                                "description": "The most performant VM size",
+                                                "value": "Performance"
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "title": {
+                            "description": "Brief title describing the environment and its resource settings",
+                            "type": "string"
+                        },
+                        "uniqueIdentifier": {
+                            "description": "The unique immutable identifier of a resource (Guid).",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

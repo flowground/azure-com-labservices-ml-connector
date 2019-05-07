@@ -1,0 +1,205 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "environmentSettingName": {
+            "required": true,
+            "type": "string"
+        },
+        "environmentName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An Azure resource.",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "The location of the resource.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-ms-azure-resource": true
+                }
+            ],
+            "description": "Represents an environment instance",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the Environment resource",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "claimedByUserName": {
+                            "description": "The name or email address of the user who has claimed the environment",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "claimedByUserObjectId": {
+                            "description": "The AAD object Id of the user who has claimed the environment",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "claimedByUserPrincipalId": {
+                            "description": "The user principal Id of the user who has claimed the environment",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "isClaimed": {
+                            "description": "Is the environment claimed or not",
+                            "readOnly": true,
+                            "type": "boolean"
+                        },
+                        "lastKnownPowerState": {
+                            "description": "Last known power state of the environment",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "latestOperationResult": {
+                            "description": "The details of the latest operation. ex: status, error",
+                            "readOnly": true,
+                            "properties": {
+                                "errorCode": {
+                                    "description": "Error code on failure.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "errorMessage": {
+                                    "description": "The error message.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "httpMethod": {
+                                    "description": "The HttpMethod - PUT/POST/DELETE for the operation.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "operationUrl": {
+                                    "description": "The URL to use to check long-running operation status",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "requestUri": {
+                                    "description": "Request URI of the operation.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "description": "The current status of the operation.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "networkInterface": {
+                            "description": "Network details of the environment",
+                            "readOnly": true,
+                            "properties": {
+                                "privateIpAddress": {
+                                    "description": "PrivateIp address of the Compute VM",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "rdpAuthority": {
+                                    "description": "Connection information for Windows",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "sshAuthority": {
+                                    "description": "Connection information for Linux",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "username": {
+                                    "description": "Username of the VM",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "passwordLastReset": {
+                            "description": "When the password was last reset on the environment.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning status of the resource.",
+                            "type": "string"
+                        },
+                        "resourceSets": {
+                            "description": "The set of a VM and the setting id it was created for",
+                            "properties": {
+                                "resourceSettingId": {
+                                    "description": "resourceSettingId for the environment",
+                                    "type": "string"
+                                },
+                                "vmResourceId": {
+                                    "description": "VM resource Id for the environment",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "totalUsage": {
+                            "description": "How long the environment has been used by a lab user",
+                            "format": "duration",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "uniqueIdentifier": {
+                            "description": "The unique immutable identifier of a resource (Guid).",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

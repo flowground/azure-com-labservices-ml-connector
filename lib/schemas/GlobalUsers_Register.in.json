@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "properties": {
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents payload for Register action.",
+            "properties": {
+                "registrationCode": {
+                    "description": "The registration code of the lab.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

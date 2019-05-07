@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "properties": {
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

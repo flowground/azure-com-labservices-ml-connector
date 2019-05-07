@@ -1,0 +1,31 @@
+{
+    "type": "object",
+    "properties": {
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents payload for any Environment operations like get, start, stop, connect",
+            "properties": {
+                "environmentId": {
+                    "description": "The resourceId of the environment",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "environmentId"
+            ],
+            "type": "object"
+        },
+        "_expand": {
+            "required": false,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An Azure resource.",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "The location of the resource.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-ms-azure-resource": true
+                }
+            ],
+            "description": "The User registered to a lab",
+            "properties": {
+                "properties": {
+                    "description": "These are the properties for the user registered under a lab.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "provisioningState": {
+                            "description": "The provisioning status of the resource.",
+                            "type": "string"
+                        },
+                        "uniqueIdentifier": {
+                            "description": "The unique immutable identifier of a resource (Guid).",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

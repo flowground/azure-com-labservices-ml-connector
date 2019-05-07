@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "properties": {
+        "userName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents the payload to list environments owned by a user",
+            "properties": {
+                "labId": {
+                    "description": "The resource Id of the lab",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

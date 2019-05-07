@@ -1,0 +1,210 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "An Azure resource.",
+                    "properties": {
+                        "id": {
+                            "description": "The identifier of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "The location of the resource.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "The tags of the resource.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "The type of the resource.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-ms-azure-resource": true
+                }
+            ],
+            "description": "Represents a lab account.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the resource.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "enabledRegionSelection": {
+                            "description": "Represents if region selection is enabled",
+                            "type": "boolean"
+                        },
+                        "latestOperationResult": {
+                            "description": "The details of the latest operation. ex: status, error",
+                            "readOnly": true,
+                            "properties": {
+                                "errorCode": {
+                                    "description": "Error code on failure.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "errorMessage": {
+                                    "description": "The error message.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "httpMethod": {
+                                    "description": "The HttpMethod - PUT/POST/DELETE for the operation.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "operationUrl": {
+                                    "description": "The URL to use to check long-running operation status",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "requestUri": {
+                                    "description": "Request URI of the operation.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "description": "The current status of the operation.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning status of the resource.",
+                            "type": "string"
+                        },
+                        "sizeConfiguration": {
+                            "description": "Represents the size configuration under the lab account",
+                            "readOnly": true,
+                            "properties": {
+                                "environmentSizes": {
+                                    "description": "Represents a list of size categories supported by this Lab Account (Small, Medium, Large)",
+                                    "items": {
+                                        "description": "Represents a size category supported by this Lab Account (small, medium or large)",
+                                        "properties": {
+                                            "maxPrice": {
+                                                "description": "The pay-as-you-go dollar price per hour this size will cost. It does not include discounts and may not reflect the actual price the size will cost. This is the maximum price of all prices within this tier.",
+                                                "format": "decimal",
+                                                "readOnly": true,
+                                                "type": "number"
+                                            },
+                                            "minMemory": {
+                                                "description": "The amount of memory available (in GB). This is the minimum amount of memory within this tier.",
+                                                "format": "double",
+                                                "readOnly": true,
+                                                "type": "number"
+                                            },
+                                            "minNumberOfCores": {
+                                                "description": "The number of cores a VM of this size has. This is the minimum number of cores within this tier.",
+                                                "format": "int32",
+                                                "readOnly": true,
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "description": "The size category",
+                                                "enum": [
+                                                    "Basic",
+                                                    "Standard",
+                                                    "Performance"
+                                                ],
+                                                "type": "string",
+                                                "x-ms-enum": {
+                                                    "modelAsString": true,
+                                                    "name": "ManagedLabVmSize",
+                                                    "values": [
+                                                        {
+                                                            "description": "The base VM size",
+                                                            "value": "Basic"
+                                                        },
+                                                        {
+                                                            "description": "The standard or default VM size",
+                                                            "value": "Standard"
+                                                        },
+                                                        {
+                                                            "description": "The most performant VM size",
+                                                            "value": "Performance"
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "vmSizes": {
+                                                "description": "Represents a set of compute sizes that can serve this given size type",
+                                                "items": {
+                                                    "description": "Contains detailed information about a size",
+                                                    "properties": {
+                                                        "computeSize": {
+                                                            "description": "Represents the actual compute size, e.g. Standard_A2_v2.",
+                                                            "type": "string"
+                                                        },
+                                                        "memory": {
+                                                            "description": "The amount of memory available (in GB).",
+                                                            "format": "double",
+                                                            "type": "number"
+                                                        },
+                                                        "numberOfCores": {
+                                                            "description": "The number of cores a VM of this size has.",
+                                                            "format": "int32",
+                                                            "type": "integer"
+                                                        },
+                                                        "price": {
+                                                            "description": "The pay-as-you-go price per hour this size will cost. It does not include discounts and may not reflect the actual price the size will cost.",
+                                                            "format": "decimal",
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "uniqueIdentifier": {
+                            "description": "The unique immutable identifier of a resource (Guid).",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

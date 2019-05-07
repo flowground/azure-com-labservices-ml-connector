@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "labAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "labName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Payload for Add Users operation on a Lab.",
+            "properties": {
+                "emailAddresses": {
+                    "description": "List of user emails addresses to add to the lab.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "emailAddresses"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "default": "2018-10-15"
+        }
+    }
+}

@@ -1,0 +1,985 @@
+{
+    "title": "ManagedLabsClient",
+    "description": "The Managed Labs Client.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/labservices-ML/2018-10-15/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "OAuth2 Implicit Grant",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "ProviderOperations_List": {
+            "main": "./lib/actions/ProviderOperations_List.js",
+            "title": "Result of the request to list REST API operations",
+            "description": "Result of the request to list REST API operations",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProviderOperations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_GetEnvironment": {
+            "main": "./lib/actions/GlobalUsers_GetEnvironment.js",
+            "title": "Gets the virtual machine details",
+            "description": "Gets the virtual machine details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_GetEnvironment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_GetOperationBatchStatus": {
+            "main": "./lib/actions/GlobalUsers_GetOperationBatchStatus.js",
+            "title": "Get batch operation status",
+            "description": "Get batch operation status",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_GetOperationBatchStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_GetOperationStatus": {
+            "main": "./lib/actions/GlobalUsers_GetOperationStatus.js",
+            "title": "Gets the status of long running operation",
+            "description": "Gets the status of long running operation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_GetOperationStatus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_GetPersonalPreferences": {
+            "main": "./lib/actions/GlobalUsers_GetPersonalPreferences.js",
+            "title": "Get personal preferences for a user",
+            "description": "Get personal preferences for a user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_GetPersonalPreferences.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_ListEnvironments": {
+            "main": "./lib/actions/GlobalUsers_ListEnvironments.js",
+            "title": "List Environments for the user",
+            "description": "List Environments for the user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_ListEnvironments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_ListLabs": {
+            "main": "./lib/actions/GlobalUsers_ListLabs.js",
+            "title": "List labs for the user.",
+            "description": "List labs for the user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_ListLabs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_Register": {
+            "main": "./lib/actions/GlobalUsers_Register.js",
+            "title": "Register a user to a managed lab",
+            "description": "Register a user to a managed lab",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_Register.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_ResetPassword": {
+            "main": "./lib/actions/GlobalUsers_ResetPassword.js",
+            "title": "Resets the user password on an environment This operation can take a while to complete",
+            "description": "Resets the user password on an environment This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_ResetPassword.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_StartEnvironment": {
+            "main": "./lib/actions/GlobalUsers_StartEnvironment.js",
+            "title": "Starts an environment by starting all resources inside the environment. This operation can take a while to complete",
+            "description": "Starts an environment by starting all resources inside the environment. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_StartEnvironment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GlobalUsers_StopEnvironment": {
+            "main": "./lib/actions/GlobalUsers_StopEnvironment.js",
+            "title": "Stops an environment by stopping all resources inside the environment This operation can take a while to complete",
+            "description": "Stops an environment by stopping all resources inside the environment This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GlobalUsers_StopEnvironment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LabAccounts_ListBySubscription": {
+            "main": "./lib/actions/LabAccounts_ListBySubscription.js",
+            "title": "List lab accounts in a subscription.",
+            "description": "List lab accounts in a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LabAccounts_ListBySubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Operations_Get": {
+            "main": "./lib/actions/Operations_Get.js",
+            "title": "Get operation",
+            "description": "Get operation",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LabAccounts_ListByResourceGroup": {
+            "main": "./lib/actions/LabAccounts_ListByResourceGroup.js",
+            "title": "List lab accounts in a resource group.",
+            "description": "List lab accounts in a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LabAccounts_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LabAccounts_Delete": {
+            "main": "./lib/actions/LabAccounts_Delete.js",
+            "title": "Delete lab account. This operation can take a while to complete",
+            "description": "Delete lab account. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LabAccounts_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LabAccounts_Get": {
+            "main": "./lib/actions/LabAccounts_Get.js",
+            "title": "Get lab account",
+            "description": "Get lab account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LabAccounts_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LabAccounts_Update": {
+            "main": "./lib/actions/LabAccounts_Update.js",
+            "title": "Modify properties of lab accounts.",
+            "description": "Modify properties of lab accounts.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LabAccounts_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LabAccounts_CreateOrUpdate": {
+            "main": "./lib/actions/LabAccounts_CreateOrUpdate.js",
+            "title": "Create or replace an existing Lab Account.",
+            "description": "Create or replace an existing Lab Account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LabAccounts_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LabAccounts_CreateLab": {
+            "main": "./lib/actions/LabAccounts_CreateLab.js",
+            "title": "Create a lab in a lab account.",
+            "description": "Create a lab in a lab account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LabAccounts_CreateLab.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GalleryImages_List": {
+            "main": "./lib/actions/GalleryImages_List.js",
+            "title": "List gallery images in a given lab account.",
+            "description": "List gallery images in a given lab account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GalleryImages_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GalleryImages_Delete": {
+            "main": "./lib/actions/GalleryImages_Delete.js",
+            "title": "Delete gallery image.",
+            "description": "Delete gallery image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GalleryImages_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GalleryImages_Get": {
+            "main": "./lib/actions/GalleryImages_Get.js",
+            "title": "Get gallery image",
+            "description": "Get gallery image",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GalleryImages_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GalleryImages_Update": {
+            "main": "./lib/actions/GalleryImages_Update.js",
+            "title": "Modify properties of gallery images.",
+            "description": "Modify properties of gallery images.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GalleryImages_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GalleryImages_CreateOrUpdate": {
+            "main": "./lib/actions/GalleryImages_CreateOrUpdate.js",
+            "title": "Create or replace an existing Gallery Image.",
+            "description": "Create or replace an existing Gallery Image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GalleryImages_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LabAccounts_GetRegionalAvailability": {
+            "main": "./lib/actions/LabAccounts_GetRegionalAvailability.js",
+            "title": "Get regional availability information for each size category configured under a lab account",
+            "description": "Get regional availability information for each size category configured under a lab account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LabAccounts_GetRegionalAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_List": {
+            "main": "./lib/actions/Labs_List.js",
+            "title": "List labs in a given lab account.",
+            "description": "List labs in a given lab account.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_Delete": {
+            "main": "./lib/actions/Labs_Delete.js",
+            "title": "Delete lab. This operation can take a while to complete",
+            "description": "Delete lab. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_Get": {
+            "main": "./lib/actions/Labs_Get.js",
+            "title": "Get lab",
+            "description": "Get lab",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_Update": {
+            "main": "./lib/actions/Labs_Update.js",
+            "title": "Modify properties of labs.",
+            "description": "Modify properties of labs.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_CreateOrUpdate": {
+            "main": "./lib/actions/Labs_CreateOrUpdate.js",
+            "title": "Create or replace an existing Lab.",
+            "description": "Create or replace an existing Lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_AddUsers": {
+            "main": "./lib/actions/Labs_AddUsers.js",
+            "title": "Add users to a lab",
+            "description": "Add users to a lab",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_AddUsers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnvironmentSettings_List": {
+            "main": "./lib/actions/EnvironmentSettings_List.js",
+            "title": "List environment setting in a given lab.",
+            "description": "List environment setting in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnvironmentSettings_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnvironmentSettings_Delete": {
+            "main": "./lib/actions/EnvironmentSettings_Delete.js",
+            "title": "Delete environment setting. This operation can take a while to complete",
+            "description": "Delete environment setting. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnvironmentSettings_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnvironmentSettings_Get": {
+            "main": "./lib/actions/EnvironmentSettings_Get.js",
+            "title": "Get environment setting",
+            "description": "Get environment setting",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnvironmentSettings_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnvironmentSettings_Update": {
+            "main": "./lib/actions/EnvironmentSettings_Update.js",
+            "title": "Modify properties of environment setting.",
+            "description": "Modify properties of environment setting.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnvironmentSettings_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnvironmentSettings_CreateOrUpdate": {
+            "main": "./lib/actions/EnvironmentSettings_CreateOrUpdate.js",
+            "title": "Create or replace an existing Environment Setting. This operation can take a while to complete",
+            "description": "Create or replace an existing Environment Setting. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnvironmentSettings_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnvironmentSettings_ClaimAny": {
+            "main": "./lib/actions/EnvironmentSettings_ClaimAny.js",
+            "title": "Claims a random environment for a user in an environment settings",
+            "description": "Claims a random environment for a user in an environment settings",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnvironmentSettings_ClaimAny.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_List": {
+            "main": "./lib/actions/Environments_List.js",
+            "title": "List environments in a given environment setting.",
+            "description": "List environments in a given environment setting.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_Delete": {
+            "main": "./lib/actions/Environments_Delete.js",
+            "title": "Delete environment. This operation can take a while to complete",
+            "description": "Delete environment. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_Get": {
+            "main": "./lib/actions/Environments_Get.js",
+            "title": "Get environment",
+            "description": "Get environment",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_Update": {
+            "main": "./lib/actions/Environments_Update.js",
+            "title": "Modify properties of environments.",
+            "description": "Modify properties of environments.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_CreateOrUpdate": {
+            "main": "./lib/actions/Environments_CreateOrUpdate.js",
+            "title": "Create or replace an existing Environment.",
+            "description": "Create or replace an existing Environment.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_Claim": {
+            "main": "./lib/actions/Environments_Claim.js",
+            "title": "Claims the environment and assigns it to the user",
+            "description": "Claims the environment and assigns it to the user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_Claim.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_ResetPassword": {
+            "main": "./lib/actions/Environments_ResetPassword.js",
+            "title": "Resets the user password on an environment This operation can take a while to complete",
+            "description": "Resets the user password on an environment This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_ResetPassword.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_Start": {
+            "main": "./lib/actions/Environments_Start.js",
+            "title": "Starts an environment by starting all resources inside the environment. This operation can take a while to complete",
+            "description": "Starts an environment by starting all resources inside the environment. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Environments_Stop": {
+            "main": "./lib/actions/Environments_Stop.js",
+            "title": "Stops an environment by stopping all resources inside the environment This operation can take a while to complete",
+            "description": "Stops an environment by stopping all resources inside the environment This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Environments_Stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnvironmentSettings_Publish": {
+            "main": "./lib/actions/EnvironmentSettings_Publish.js",
+            "title": "Provisions/deprovisions required resources for an environment setting based on current state of the lab/environment setting.",
+            "description": "Provisions/deprovisions required resources for an environment setting based on current state of the lab/environment setting.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnvironmentSettings_Publish.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnvironmentSettings_Start": {
+            "main": "./lib/actions/EnvironmentSettings_Start.js",
+            "title": "Starts a template by starting all resources inside the template. This operation can take a while to complete",
+            "description": "Starts a template by starting all resources inside the template. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnvironmentSettings_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EnvironmentSettings_Stop": {
+            "main": "./lib/actions/EnvironmentSettings_Stop.js",
+            "title": "Starts a template by starting all resources inside the template. This operation can take a while to complete",
+            "description": "Starts a template by starting all resources inside the template. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EnvironmentSettings_Stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Labs_Register": {
+            "main": "./lib/actions/Labs_Register.js",
+            "title": "Register to managed lab.",
+            "description": "Register to managed lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Labs_Register.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_List": {
+            "main": "./lib/actions/Users_List.js",
+            "title": "List users in a given lab.",
+            "description": "List users in a given lab.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_Delete": {
+            "main": "./lib/actions/Users_Delete.js",
+            "title": "Delete user. This operation can take a while to complete",
+            "description": "Delete user. This operation can take a while to complete",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_Get": {
+            "main": "./lib/actions/Users_Get.js",
+            "title": "Get user",
+            "description": "Get user",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_Update": {
+            "main": "./lib/actions/Users_Update.js",
+            "title": "Modify properties of users.",
+            "description": "Modify properties of users.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Users_CreateOrUpdate": {
+            "main": "./lib/actions/Users_CreateOrUpdate.js",
+            "title": "Create or replace an existing User.",
+            "description": "Create or replace an existing User.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Users_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
